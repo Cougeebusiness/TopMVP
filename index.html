@@ -473,25 +473,22 @@ Chaque collaboration post-lancement est cadrée à l’avance afin de garantir c
             <h2 class="text-3xl md:text-6xl font-bold text-gray-900 mb-4">Prêt à matérialiser votre idée de SaaS ?</h2>
             <p class="text-xl text-gray-600 max-w-2xl mx-auto">Réservez votre RDV visio avec nous</p>
           </div>
+          <div class="max-w-6xl mx-auto bg-white border rounded-2xl shadow-sm p-2 md:p-4 h-[760px]">
+            <!-- Cal inline embed code begins -->
+            <div style="width:100%;height:100%;overflow:scroll" id="my-cal-inline-appel-strategique-micro-saas"></div>
+            <script type="text/javascript">
+              (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+              Cal("init", "appel-strategique-micro-saas", {origin:"https://app.cal.com"});
 
-          <div class="max-w-6xl mx-auto bg-white border rounded-2xl p-6 md:p-8 shadow-sm">
-            <div class="grid lg:grid-cols-3 gap-6">
-              <div class="border rounded-xl p-6">
-                <img src="TopMVP-logo.png" alt="TopMVP" class="h-11 w-auto object-contain mb-4" />
-                <h3 class="text-3xl md:text-4xl font-bold mb-3">Discovery Call</h3>
-                <p class="text-gray-600 mb-6">A quick call to map your MVP, scope and delivery plan.</p>
-                <ul class="space-y-2 text-gray-700">
-                  <li>⏱️ 30 min</li>
-                  <li>💻 Google Meet</li>
-                  <li>🌍 CET / EST flexible</li>
-                </ul>
-              </div>
-              <div class="lg:col-span-2 border rounded-xl p-6 bg-gray-50">
-                <p class="font-semibold text-gray-900 mb-2">Calendrier de réservation</p>
-                <p class="text-gray-600 mb-4">Connecte ton lien Calendly ici pour une intégration identique.</p>
-                <a href="https://calendly.com" target="_blank" rel="nofollow" class="inline-flex items-center px-5 py-2.5 rounded-lg bg-indigo-600 text-white">Configurer Calendly →</a>
-              </div>
-            </div>
+              Cal.ns["appel-strategique-micro-saas"]("inline", {
+                elementOrSelector:"#my-cal-inline-appel-strategique-micro-saas",
+                config: {"layout":"month_view","useSlotsViewOnSmallScreen":"true"},
+                calLink: "cougee/appel-strategique-micro-saas",
+              });
+
+              Cal.ns["appel-strategique-micro-saas"]("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
+            </script>
+            <!-- Cal inline embed code ends -->
           </div>
         </div>
       </section>
