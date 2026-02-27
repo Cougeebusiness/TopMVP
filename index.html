@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TopMVP | MVP SaaS en 14 jours</title>
+    <meta
+      name="description"
+      content="TopMVP crée le MVP de votre SaaS/Web App en 14 jours, à prix fixe, sans vous ruiner."
+    />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --brand: #4f46e5;
+        --brand2: #3b82f6;
+      }
+      body {
+        font-family: "Plus Jakarta Sans", sans-serif;
+      }
+      .glass-blur {
+        backdrop-filter: blur(10px);
+      }
+      .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+      }
+      .scrollbar-hide {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+      .faq-content {
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+        transition: max-height 0.35s ease, opacity 0.35s ease;
+      }
+      .faq-item.active .faq-content {
+        max-height: 220px;
+        opacity: 1;
+      }
+      .faq-item.active .faq-btn {
+        border-left: 4px solid var(--brand);
+        background: #fff;
+      }
+      .project-tab.active {
+        background: #fff;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        border-left: 4px solid var(--brand);
+      }
+      .brand-gradient-bg {
+        background-image: linear-gradient(90deg, #2ec5ff 0%, #4f6af8 52%, #a73ee7 100%);
+      }
+      .brand-gradient-text {
+        background-image: linear-gradient(90deg, #2ec5ff 0%, #4f6af8 52%, #a73ee7 100%);
+      }
+      .step-card {
+        background: transparent;
+        border-radius: 1rem;
+        transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+      }
+      .step-card:hover {
+        background: #fff;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        transform: translateY(-2px);
+      }
+      .step-dot {
+        transition: background-color 0.3s ease, color 0.3s ease;
+      }
+      .step-dot.active {
+        background-color: #4f46e5;
+        color: #fff;
+      }
+      .step-dot.inactive {
+        background-color: #d1d5db;
+        color: #6b7280;
+      }
+      .step-title {
+        transition: color 0.3s ease;
+      }
+      .step-title.active {
+        color: #4f46e5;
+      }
+    </style>
+  </head>
+  <body class="antialiased text-gray-800 bg-white">
+    <div class="min-h-screen bg-white">
+      <nav
+        id="navbar"
+        class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent py-6"
+      >
+        <div class="max-w-7xl mx-auto px-4">
+          <div class="flex justify-between items-center">
+            <a href="#" class="flex items-center gap-3">
+              <img src="TopMVP-logo.png" alt="TopMVP" class="h-10 md:h-11 w-auto object-contain" />
+            </a>
+
+            <div class="hidden md:flex items-center space-x-7">
+             
+              <a class="text-gray-700 hover:text-indigo-600 font-medium" href="#how-it-works">Comment ça fonctionne</a>
+               <a class="text-gray-700 hover:text-indigo-600 font-medium" href="#portfolio">Projets</a>
+              <a class="text-gray-700 hover:text-indigo-600 font-medium" href="#tarif">Tarif</a>
+              <a class="text-gray-700 hover:text-indigo-600 font-medium" href="#faq">FAQ</a>
+            </div>
+
+            <a
+              href="#book-call"
+              class="hidden md:flex items-center gap-2 brand-gradient-bg text-white px-5 py-2.5 rounded-xl hover:shadow-md transition-all"
+            >
+              <span>Réserver un RDV</span>
+              <span>→</span>
+            </a>
+
+            <button id="menuBtn" class="md:hidden text-gray-700 p-2" aria-label="Toggle menu">☰</button>
+          </div>
+        </div>
+
+        <div
+          id="mobileMenu"
+          class="fixed inset-0 bg-white z-40 transform translate-x-full transition-transform duration-300 md:hidden"
+        >
+          <div class="h-full flex flex-col items-center justify-center space-y-8">
+            <a class="text-xl font-medium" href="#portfolio">Portfolio</a>
+            <a class="text-xl font-medium" href="#how-it-works">How It Works</a>
+            <a class="text-xl font-medium" href="#tarif">Tarif</a>
+            <a class="text-xl font-medium" href="#faq">FAQ</a>
+            <a class="brand-gradient-bg text-white px-6 py-3 rounded-xl" href="#book-call">Book a Call</a>
+          </div>
+        </div>
+      </nav>
+
+      <section class="relative min-h-screen flex items-center overflow-hidden bg-white">
+        <div class="absolute inset-0 bg-gradient-to-br from-indigo-50 via-white to-white"></div>
+        <div class="absolute -top-32 -right-32 w-80 h-80 rounded-full bg-indigo-200/60 blur-3xl"></div>
+        <div class="absolute top-1/2 -left-20 w-60 h-60 rounded-full bg-blue-200/60 blur-3xl"></div>
+
+        <div class="container relative mx-auto px-4 md:px-6 z-10 py-24">
+          <div class="max-w-5xl mx-auto text-center">
+            <div class="inline-block mb-6 px-4 py-1.5 bg-gradient-to-r from-indigo-500 to-indigo-600 rounded-full text-white text-sm font-medium">
+              Votre MVP prêt en 14 jours
+            </div>
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-8 leading-tight pb-2">
+              Votre idée de SaaS
+              <span class="block text-transparent bg-clip-text brand-gradient-text">déployée en 14 jours</span>
+            </h1>
+            <p class="text-xl text-gray-600 mb-10 max-w-3xl mx-auto">
+              Pas besoin de vous ruiner ni d'attendre des mois avant de tester votre nouvelle idée de SaaS : on construit votre MVP en 2 semaines chrono, prêt à être lancé, à un prix abordable !
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+              <a href="#book-call" class="px-6 py-3 rounded-lg brand-gradient-bg text-white font-medium shadow-md hover:shadow-lg transition-all">Réserver un RDV</a>
+              <a href="#how-it-works" class="px-6 py-3 rounded-lg bg-white text-indigo-600 border border-indigo-200 font-medium shadow-sm hover:shadow-md transition-all">Comment ça fonctionne</a>
+            </div>
+
+            <div class="mt-12 max-w-4xl mx-auto">
+              <div class="bg-white rounded-2xl border border-gray-200 shadow-sm p-3 md:p-4">
+                <div class="relative w-full aspect-video rounded-xl overflow-hidden bg-gray-100">
+                  <iframe
+                    class="w-full h-full"
+                    src="https://www.youtube.com/embed/otGOhi0vG5E?rel=0"
+                    title="Video TopMVP"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    allowfullscreen
+                  ></iframe>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="use-cases" class="py-24 bg-gray-50">
+        <div class="container mx-auto px-4 md:px-6">
+          <div class="text-center mb-16">
+            <div class="inline-block mb-4 px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full text-sm font-medium">Cas d'utilisation</div>
+            <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mb-4">Parfait pour <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-blue-500">ces scénarios :</span></h2>
+            <p class="text-xl text-gray-600 max-w-2xl mx-auto">Notre service de création de MVP en 14 jours est parfaitement adapté aux situations suivantes :</p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl mx-auto">
+            <article class="bg-white p-8 rounded-2xl shadow-sm border"><div class="flex gap-5"><div class="w-16 h-16 rounded-xl bg-indigo-50 flex items-center justify-center text-3xl">🔍</div><div><h3 class="text-2xl font-bold mb-2">Valider votre idée</h3><p class="text-gray-600">Validez votre concept avec de vrais utilisateurs avant d’engager un investissement important.</p></div></div></article>
+            <article class="bg-white p-8 rounded-2xl shadow-sm border"><div class="flex gap-5"><div class="w-16 h-16 rounded-xl bg-indigo-50 flex items-center justify-center text-3xl">💰</div><div><h3 class="text-2xl font-bold mb-2">Attirer des investisseurs</h3><p class="text-gray-600">Pitcher avec un produit concret, pas juste des slides.</p></div></div></article>
+            <article class="bg-white p-8 rounded-2xl shadow-sm border"><div class="flex gap-5"><div class="w-16 h-16 rounded-xl bg-indigo-50 flex items-center justify-center text-3xl">🚀</div><div><h3 class="text-2xl font-bold mb-2">Lancer rapidement</h3><p class="text-gray-600">Collectez des retours "terrain" rapidement.</p></div></div></article>
+            <article class="bg-white p-8 rounded-2xl shadow-sm border"><div class="flex gap-5"><div class="w-16 h-16 rounded-xl bg-indigo-50 flex items-center justify-center text-3xl">↪️</div><div><h3 class="text-2xl font-bold mb-2 text-indigo-600">Pivoter efficacement</h3><p class="text-gray-600">Ajustez votre produit sans exploser votre budget.</p></div></div></article>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects" class="py-24 bg-white">
+        <div id="portfolio"></div>
+        <div class="container mx-auto px-4 md:px-6">
+          <div class="text-center mb-10">
+            <div class="inline-block mb-4 px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full text-sm font-medium">Notre travail</div>
+            <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mb-2">Exemple de projet réalisé</h2>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">Voici un exemple de MVP que nous avons déployé en un temps record :</p>
+          </div>
+          <div class="max-w-6xl mx-auto flex flex-col gap-8 lg:flex-row lg:items-stretch">
+            <div class="lg:w-1/2">
+              <div class="h-full w-full rounded-3xl overflow-hidden shadow-lg border border-gray-100 bg-white p-4 md:p-6">
+                <img src="mockup2-mycallsensei.png" alt="Mycallsensei mockup" class="w-full h-full object-contain" />
+              </div>
+            </div>
+            <div class="lg:w-1/2 bg-white rounded-3xl border border-gray-100 p-8 shadow-lg space-y-6 h-full">
+              <div>
+                <h3 class="text-3xl font-bold text-gray-900 mb-2">MyCallSensei.ai</h3>
+                <p class="text-gray-600 leading-relaxed">Plateforme SaaS avec IA qui permet de s'entraîner aux appels de vente et d'avoir un feedback de chaque appel pour progresser.</p>
+              </div>
+              <div>
+                <h4 class="text-xs font-semibold text-gray-500 uppercase mb-3">Fonctionnalités :</h4>
+                <ul class="space-y-2 text-gray-700">
+                  <li class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-indigo-600"></span> Création d'avatars prospects personnalisés </li>
+                  <li class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-indigo-600"></span> Simulation d'appel de vente en direct avec IA vocale</li>
+                  <li class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-indigo-600"></span> Feedback & scoring de chaque appel</li>
+                
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      
+
+      <section id="services" class="py-24 bg-gray-50">
+        <div class="container mx-auto px-4 md:px-6">
+          <div class="text-center mb-16">
+            <div class="inline-block mb-4 px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full text-sm font-medium">Notre service</div>
+            <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mb-4">Tout ce que vous avez besoin <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-blue-500"><br>pour lancer rapidement</span></h2>
+            <p class="text-xl text-gray-600 max-w-2xl mx-auto">Votre idée de SaaS devient un produit réel, prêt à être testé auprès de vos premiers utilisateurs.</p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl mx-auto">
+            <article class="group bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all">
+              <div class="flex gap-5">
+                <div class="w-16 h-16 shrink-0 rounded-xl bg-indigo-50 flex items-center justify-center text-3xl">💻</div>
+                <div><h3 class="text-2xl font-bold mb-2">Développement de votre MVP </h3><p class="text-gray-600">Nous construisons votre MVP fonctionnel en 14 jours, centré sur un seul use case clair et stratégique.</p></div>
+              </div>
+            </article>
+            <article class="group bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all">
+              <div class="flex gap-5">
+                <div class="w-16 h-16 shrink-0 rounded-xl bg-indigo-50 flex items-center justify-center text-3xl">🎨</div>
+                <div><h3 class="text-2xl font-bold mb-2"> Design professionnel & efficace</h3><p class="text-gray-600">Une interface moderne, simple et intuitive pour faciliter l’adoption dès les premiers utilisateurs.</p></div>
+              </div>
+            </article>
+            <article class="group bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all">
+              <div class="flex gap-5">
+                <div class="w-16 h-16 shrink-0 rounded-xl bg-indigo-50 flex items-center justify-center text-3xl">🔍</div>
+                <div><h3 class="text-2xl font-bold mb-2">Cadrage & architecture</h3><p class="text-gray-600">On choisit l'architecture la plus simple & fonctionnelle pour déployer votre idée.</p></div>
+              </div>
+            </article>
+            <article class="group bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all">
+              <div class="flex gap-5">
+                <div class="w-16 h-16 shrink-0 rounded-xl bg-indigo-50 flex items-center justify-center text-3xl">🚀</div>
+                <div><h3 class="text-2xl font-bold mb-2">Mise en ligne & validation</h3><p class="text-gray-600">Produit déployé, prêt à être utilisé et à collecter des retours concrets.</p></div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="how-it-works" class="py-24 bg-white">
+        <div class="container mx-auto px-4 md:px-6">
+          <div class="text-center mb-16">
+            <div class="inline-block mb-4 px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full text-sm font-medium">Notre processus</div>
+            <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mb-4">Comment nous <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-blue-500">créons votre MVP</span></h2>
+            <p class="text-xl text-gray-600 max-w-2xl mx-auto">De l'idée jusqu'au lancement en 14 jours.</p>
+          </div>
+
+          <div class="max-w-6xl mx-auto">
+            <div class="h-1 bg-gray-200 rounded-full mb-12">
+              <div id="stepsProgressFill" class="h-1 bg-gradient-to-r from-indigo-600 to-blue-500 rounded-full transition-all duration-300 ease-out" style="width: 25%"></div>
+            </div>
+            <div id="stepsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              <article class="step-card text-center p-6" data-step="1">
+                <div class="step-dot active w-12 h-12 rounded-full font-bold flex items-center justify-center mx-auto mb-6">1</div>
+                <div class="text-3xl mb-3">📞</div>
+                <h3 class="step-title active text-3xl md:text-xl font-bold mb-2">Appel de découverte</h3>
+                <p class="text-gray-600">Alignement stratégique sur votre idée, votre audience et les fonctionnalités prioritaires.</p>
+              </article>
+              <article class="step-card text-center p-6" data-step="2">
+                <div class="step-dot inactive w-12 h-12 rounded-full font-bold flex items-center justify-center mx-auto mb-6">2</div>
+                <div class="text-3xl mb-3">📝</div>
+                <h3 class="step-title text-3xl md:text-xl font-bold mb-2">Cadrage & Planification</h3>
+                <p class="text-gray-600">Définition claire du scope, des maquettes fonctionnelles et du plan d’exécution.</p>
+              </article>
+              <article class="step-card text-center p-6" data-step="3">
+                <div class="step-dot inactive w-12 h-12 rounded-full font-bold flex items-center justify-center mx-auto mb-6">3</div>
+                <div class="text-3xl mb-3">💻</div>
+                <h3 class="step-title text-3xl md:text-xl font-bold mb-2">Développement rapide</h3>
+                <p class="text-gray-600">Progression quotidienne, focalisée sur l’essentiel.</p>
+              </article>
+              <article class="step-card text-center p-6" data-step="4">
+                <div class="step-dot inactive w-12 h-12 rounded-full font-bold flex items-center justify-center mx-auto mb-6">4</div>
+                <div class="text-3xl mb-3">🚀</div>
+                <h3 class="step-title text-3xl md:text-xl font-bold mb-2">Déploiement du MVP</h3>
+                <p class="text-gray-600">Mise en production de votre MVP prêt à être utilisé.</p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="faq" class="py-24 bg-white">
+        <div class="container mx-auto px-4 md:px-6">
+          <div class="text-center mb-16">
+            <div class="inline-block mb-4 px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full text-sm font-medium">FAQ</div>
+            <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mb-4">Foire aux <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-blue-500">questions</span></h2>
+            <p class="text-xl text-gray-600 max-w-2xl mx-auto">Tout ce qu’il faut savoir sur notre service de création de MVP</p>
+          </div>
+
+          <div class="max-w-5xl mx-auto space-y-5" id="faqList">
+            <article class="faq-item active">
+              <button class="faq-btn w-full text-left p-6 rounded-xl flex justify-between items-center bg-gray-50 hover:bg-gray-100 transition">
+                <h3 class="text-3xl md:text-2xl font-bold text-indigo-600">Combien de temps faut-il pour créer le MVP ?</h3>
+                <span>⌃</span>
+              </button>
+              <div class="faq-content"><div class="p-6 text-gray-600">Nous développons votre MVP en 14 jours, en nous concentrant sur la valeur essentielle et une mise en ligne prête à être testée.</div></div>
+            </article>
+            <article class="faq-item">
+              <button class="faq-btn w-full text-left p-6 rounded-xl flex justify-between items-center bg-gray-50 hover:bg-gray-100 transition">
+                <h3 class="text-3xl md:text-2xl font-bold text-gray-800">Que se passe-t-il lors de l’appel stratégique ?</h3><span>⌄</span>
+              </button>
+              <div class="faq-content"><div class="p-6 text-gray-600">Nous passons 30 à 45 minutes à discuter de votre idée, de votre cible et des fonctionnalités clés.
+Nous vous aidons à identifier les fonctionnalités indispensables pour votre MVP et à déterminer si nous pouvons le livrer en 14 jours.
+
+À la fin de l’appel, vous repartez avec un périmètre clair et une date de lancement définie.</div></div>
+            </article>
+            <article class="faq-item">
+              <button class="faq-btn w-full text-left p-6 rounded-xl flex justify-between items-center bg-gray-50 hover:bg-gray-100 transition">
+                <h3 class="text-3xl md:text-2xl font-bold text-gray-800">Qui possède le code, le design et la propriété intellectuelle ?</h3><span>⌄</span>
+              </button>
+              <div class="faq-content"><div class="p-6 text-gray-600">Une fois le paiement effectué en totalité, vous détenez 100 % du code, de la propriété intellectuelle et des éléments de design.
+
+Nous fonctionnons en toute transparence et vous conservez l’entière propriété de votre produit.</div></div>
+            </article>
+            <article class="faq-item">
+              <button class="faq-btn w-full text-left p-6 rounded-xl flex justify-between items-center bg-gray-50 hover:bg-gray-100 transition">
+                <h3 class="text-3xl md:text-2xl font-bold text-gray-800">Quel est votre processus de développement et de livraison ?</h3><span>⌄</span>
+              </button>
+              <div class="faq-content"><div class="p-6 text-gray-600">Notre méthode est simple et transparente.
+Nous commençons par un appel de cadrage pour définir précisément votre vision et le périmètre du projet.
+Ensuite, nous passons à une phase rapide de design et de développement.
+Le processus se termine par des tests complets et une mise en ligne fluide, afin que votre produit soit prêt à être utilisé dès le premier jour.</div></div>
+            </article>
+            <article class="faq-item">
+              <button class="faq-btn w-full text-left p-6 rounded-xl flex justify-between items-center bg-gray-50 hover:bg-gray-100 transition">
+                <h3 class="text-3xl md:text-2xl font-bold text-gray-800">Combien cela va me coûter ?</h3><span>⌄</span>
+              </button>
+              <div class="faq-content"><div class="p-6 text-gray-600">Le tarif est fixe : 2490€ (offre du moment) pour un MVP fonctionnel livré en 14 jours. Ce prix comprend : le front-end complet, le back-end simple, un use case principal clairement défini, le système d'authentification utilisateur, le déploiement en ligne et une architecture propre et réutilisable.
+Il s’agit d’un produit réel, prêt à être testé sur le marché — pas d’une maquette ou d’un prototype théorique.
+Si votre projet nécessite plusieurs use cases ou une complexité supplémentaire, cela fera l’objet de sprints additionnels définis à l’avance.</div></div>
+            </article>
+            <article class="faq-item">
+              <button class="faq-btn w-full text-left p-6 rounded-xl flex justify-between items-center bg-gray-50 hover:bg-gray-100 transition">
+                <h3 class="text-3xl md:text-2xl font-bold text-gray-800">Proposez-vous un support ou une maintenance après le lancement ?</h3><span>⌄</span>
+              </button>
+              <div class="faq-content"><div class="p-6 text-gray-600">Oui, c’est envisageable.
+Si vous souhaitez faire évoluer votre produit après le lancement, nous pouvons définir ensemble un nouveau sprint dédié ou un accompagnement ponctuel adapté à vos besoins.
+Chaque collaboration post-lancement est cadrée à l’avance afin de garantir clarté, périmètre défini et délais précis.</div></div>
+            </article>
+            
+          </div>
+        </div>
+      </section>
+
+      <section id="tarif" class="py-24 bg-gray-50">
+        <div class="container mx-auto px-4 md:px-6">
+          <div class="text-center mb-14">
+            <div class="inline-block mb-4 px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full text-sm font-medium">Tarif</div>
+            <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mb-4">Un prix simple, <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-blue-500">sans surprise</span></h2>
+            <p class="text-xl text-gray-600 max-w-2xl mx-auto">Un MVP prêt à être lancé en 14 jours, avec un cadre clair et un budget maîtrisé.</p>
+          </div>
+
+          <div class="max-w-5xl mx-auto bg-white border border-gray-200 rounded-3xl p-7 md:p-10 shadow-sm">
+            <div class="text-center max-w-4xl mx-auto">
+              <h3 class="text-3xl md:text-5xl font-extrabold text-gray-900 mb-2">MVP Fast </h3>
+              <p class="text-xl md:text-2xl text-gray-500 line-through mb-1">4 490€</p>
+              <p class="text-5xl md:text-6xl font-extrabold leading-tight text-transparent bg-clip-text brand-gradient-text inline-block">2 490€</p>
+              <p class="text-lg md:text-2xl font-bold text-green-600 mt-2 mb-4">Économisez 2 000€ - Offre de lancement</p>
+             
+              <div class="inline-flex items-center px-6 py-3 rounded-full border border-gray-300 text-xl md:text-2xl font-bold text-gray-700 mb-10">Livraison en 14 jours</div>
+            </div>
+
+            <div class="max-w-4xl mx-auto text-center">
+              <h4 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-8">Ce qui est inclus :</h4>
+              <ul class="max-w-2xl mx-auto pl-6 md:pl-10 space-y-5 text-gray-700 text-base md:text-lg text-left">
+                <li class="flex items-start gap-4">
+                  <span class="mt-1 inline-flex h-8 w-8 items-center justify-center rounded-full border border-gray-300 text-base">✓</span>
+                  Création d'un MVP SaaS fonctionnel (Frontend + Backend)
+                </li>
+                <li class="flex items-start gap-4">
+                  <span class="mt-1 inline-flex h-8 w-8 items-center justify-center rounded-full border border-gray-300 text-base">✓</span>
+                   Une interface moderne et prête à être utilisée
+                </li>
+                <li class="flex items-start gap-4">
+                  <span class="mt-1 inline-flex h-8 w-8 items-center justify-center rounded-full border border-gray-300 text-base">✓</span>
+                  Un use case principal entièrement opérationnel
+                </li>
+                <li class="flex items-start gap-4">
+                  <span class="mt-1 inline-flex h-8 w-8 items-center justify-center rounded-full border border-gray-300 text-base">✓</span>
+                  Entièrement responsive : ordinateur, tablette + mobile
+                </li>
+                <li class="flex items-start gap-4">
+                  <span class="mt-1 inline-flex h-8 w-8 items-center justify-center rounded-full border border-gray-300 text-base">✓</span>
+                  Déploiement en ligne inclus avec livraison du code 
+                </li>
+                
+              </ul>
+
+              <div class="mt-10 pt-8 border-t border-gray-100">
+                <p class="text-gray-600 text-base md:text-lg mb-4">Des questions ? Parlons-en ensemble.</p>
+                <a href="#book-call" class="inline-flex items-center gap-2 px-7 py-3 rounded-xl brand-gradient-bg text-white font-semibold shadow-md hover:shadow-lg transition-all">
+                  <span>Réserver un RDV</span>
+                  <span>→</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="book-call" class="py-24 bg-gray-50">
+        <div class="container mx-auto px-4 md:px-6">
+          <div class="max-w-4xl mx-auto text-center mb-12">
+            <div class="inline-block mb-4 px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full text-sm font-medium">Get Started</div>
+            <h2 class="text-3xl md:text-6xl font-bold text-gray-900 mb-4">Prêt à matérialiser votre idée de SaaS ?</h2>
+            <p class="text-xl text-gray-600 max-w-2xl mx-auto">Réservez votre RDV visio avec nous</p>
+          </div>
+
+          <div class="max-w-6xl mx-auto bg-white border rounded-2xl p-6 md:p-8 shadow-sm">
+            <div class="grid lg:grid-cols-3 gap-6">
+              <div class="border rounded-xl p-6">
+                <img src="TopMVP-logo.png" alt="TopMVP" class="h-11 w-auto object-contain mb-4" />
+                <h3 class="text-3xl md:text-4xl font-bold mb-3">Discovery Call</h3>
+                <p class="text-gray-600 mb-6">A quick call to map your MVP, scope and delivery plan.</p>
+                <ul class="space-y-2 text-gray-700">
+                  <li>⏱️ 30 min</li>
+                  <li>💻 Google Meet</li>
+                  <li>🌍 CET / EST flexible</li>
+                </ul>
+              </div>
+              <div class="lg:col-span-2 border rounded-xl p-6 bg-gray-50">
+                <p class="font-semibold text-gray-900 mb-2">Calendrier de réservation</p>
+                <p class="text-gray-600 mb-4">Connecte ton lien Calendly ici pour une intégration identique.</p>
+                <a href="https://calendly.com" target="_blank" rel="nofollow" class="inline-flex items-center px-5 py-2.5 rounded-lg bg-indigo-600 text-white">Configurer Calendly →</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer class="bg-gray-900 text-white py-8">
+        <div class="container mx-auto px-4">
+          <div class="flex flex-col md:flex-row items-center gap-4">
+            <div class="md:w-1/4"><img src="TopMVP-logo.png" alt="TopMVP" class="h-12 w-auto object-contain" /></div>
+            <div class="flex flex-wrap justify-center gap-6 md:w-2/4 text-gray-400">
+              <a href="#services" class="hover:text-white">Services</a>
+              <a href="#projects" class="hover:text-white">Projects</a>
+              <a href="#tarif" class="hover:text-white">Tarif</a>
+              <a href="#faq" class="hover:text-white">FAQ</a>
+              <a href="#book-call" class="hover:text-white">Réserver un RDV</a>
+            </div>
+        
+          </div>
+          <div class="border-t border-gray-800 mt-6 pt-6 text-center text-gray-500 text-sm">© 2026 TopMVP. All rights reserved.</div>
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      const nav = document.getElementById("navbar");
+      const menuBtn = document.getElementById("menuBtn");
+      const mobileMenu = document.getElementById("mobileMenu");
+
+      const toggleScrolled = () => {
+        if (window.scrollY > 20) {
+          nav.classList.add("bg-white/90", "glass-blur", "shadow-sm", "py-4");
+          nav.classList.remove("bg-transparent", "py-6");
+        } else {
+          nav.classList.remove("bg-white/90", "glass-blur", "shadow-sm", "py-4");
+          nav.classList.add("bg-transparent", "py-6");
+        }
+      };
+      window.addEventListener("scroll", toggleScrolled);
+      toggleScrolled();
+
+      menuBtn.addEventListener("click", () => {
+        mobileMenu.classList.toggle("translate-x-full");
+      });
+      mobileMenu.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => mobileMenu.classList.add("translate-x-full"));
+      });
+
+      const stepsGrid = document.getElementById("stepsGrid");
+      const stepsProgressFill = document.getElementById("stepsProgressFill");
+
+      if (stepsGrid && stepsProgressFill) {
+        const stepCards = [...stepsGrid.querySelectorAll(".step-card")];
+
+        const setActiveStep = (step) => {
+          const progress = Math.max(1, Math.min(step, stepCards.length));
+          stepsProgressFill.style.width = `${(progress / stepCards.length) * 100}%`;
+
+          stepCards.forEach((card, idx) => {
+            const dot = card.querySelector(".step-dot");
+            const title = card.querySelector(".step-title");
+            const isActive = idx + 1 <= progress;
+
+            if (dot) {
+              dot.classList.toggle("active", isActive);
+              dot.classList.toggle("inactive", !isActive);
+            }
+            if (title) {
+              title.classList.toggle("active", idx + 1 === progress);
+            }
+          });
+        };
+
+        setActiveStep(1);
+
+        stepCards.forEach((card, idx) => {
+          card.addEventListener("mouseenter", () => setActiveStep(idx + 1));
+        });
+
+        stepsGrid.addEventListener("mouseleave", () => setActiveStep(1));
+      }
+
+      const faqItems = document.querySelectorAll(".faq-item");
+      faqItems.forEach((item) => {
+        item.querySelector("button").addEventListener("click", () => {
+          const isActive = item.classList.contains("active");
+          faqItems.forEach((f) => f.classList.remove("active"));
+          if (!isActive) item.classList.add("active");
+        });
+      });
+    </script>
+  </body>
+</html>
