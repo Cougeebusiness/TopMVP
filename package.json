@@ -1,0 +1,26 @@
+{
+  "name": "topmvp",
+  "version": "1.0.0",
+  "description": "Static marketing site for TopMVP",
+  "scripts": {
+    "build:css": "tailwindcss -c tailwind.config.js -i ./src/tailwind.css -o ./styles.css --minify"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Cougeebusiness/TopMVP.git"
+  },
+  "keywords": [
+    "tailwind",
+    "static-site"
+  ],
+  "author": "",
+  "license": "ISC",
+  "private": true,
+  "bugs": {
+    "url": "https://github.com/Cougeebusiness/TopMVP/issues"
+  },
+  "homepage": "https://github.com/Cougeebusiness/TopMVP#readme",
+  "devDependencies": {
+    "tailwindcss": "^3.4.17"
+  }
+}
